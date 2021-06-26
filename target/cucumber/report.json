@@ -1,0 +1,74 @@
+[
+  {
+    "line": 20,
+    "elements": [
+      {
+        "start_timestamp": "2021-06-26T17:13:36.660Z",
+        "before": [
+          {
+            "result": {
+              "duration": 8000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "test.library.Hooks.beforeHook(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "line": 24,
+        "name": "login",
+        "description": "",
+        "id": "launch;login",
+        "after": [
+          {
+            "result": {
+              "status": "passed"
+            },
+            "match": {
+              "location": "test.library.Hooks.afterHook(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 14849000000,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "login using credentials on apllication",
+            "match": {
+              "location": "test.steps.login.invokeBrowser()"
+            },
+            "keyword": "Given "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@launch"
+          },
+          {
+            "name": "@login"
+          }
+        ]
+      }
+    ],
+    "name": "launch",
+    "description": "  I want to use this template for my feature file",
+    "id": "launch",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/launch.feature",
+    "tags": [
+      {
+        "name": "@launch",
+        "type": "Tag",
+        "location": {
+          "line": 19,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

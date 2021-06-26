@@ -1,0 +1,306 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Frame_Work</groupId>
+  <artifactId>Frame_Work</artifactId>
+  <version>0.0.1</version>
+  <!-- utf(unicode transformation) used to encode the unicode characters
+  Unicode is a superset of ASCII,ASCII defines 128 characters, 
+  which map to the numbers 0–127. Unicode defines (less than) 221 characters, which, similarly, map to numbers 0–221
+  -->
+  <properties>
+  <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+  <maven.compile.encoding>UTF-8</maven.compile.encoding>
+  <cucumber.version>1.2.5</cucumber.version>
+  </properties>
+  <!-- The compiler plugin is used to compile the source code of a Maven project
+This plugin has two goals,
+compile – compile main source files
+testCompile – compile test source files
+1.7 is jdk version   -->
+  <build>
+  <pluginManagement>
+  <plugins>
+   <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+				  <version>2.18.1</version>
+				  <configuration>
+				  <testFailureIgnore>true</testFailureIgnore>
+				  <suiteXmlFiles>
+				  <suiteXmlFile>testng.xml</suiteXmlFile>
+				  </suiteXmlFiles>
+				  </configuration>
+				</plugin>
+				<plugin>  
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-compiler-plugin</artifactId>
+				  <version>3.3</version>
+				  <configuration>
+				  <source>1.7</source>
+				  <target>1.7</target>
+				  <meminitial>128m</meminitial>
+				  <maxmem>128m</maxmem>
+				  </configuration>
+  </plugin>
+  </plugins>
+  </pluginManagement>
+  
+  <plugins>
+<!-- plugins are used to: create jar files, create war files, compile code, unit test code, create project documentation, and on and on. ... -->
+  <!-- The Assembly Plugin for Maven enables developers to combine project output into a single distributable archive
+   that also contains dependencies, modules, site documentation, and other files.
+    -->
+    <!-- The configuration XML element inside the maven-assembly-plugin configuration contains the descriptorRef which tells Maven what type of assembly this configuration should build. 
+    The value jar-with-dependencies tells Maven to build a JAR file with dependencies which is another term for a Fat JAR.
+	The executions XML element tells Maven which Maven build phase and goal this Maven plugin should be executed during. 
+	The maven-assembly-plugin should always be executed during the package phase. -->
+  <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-assembly-plugin</artifactId>
+                   <version>2.5.5</version>
+               <configuration>
+                  <descriptorRefs>
+                   <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+                </configuration>
+                <executions>
+                <execution>
+                   <phase>package</phase>
+                   <goals>
+                      <goal>single</goal>
+                   </goals>
+                 </execution>
+                 </executions>
+  </plugin>
+  
+  <!-- The copy-rename-maven-plugin helps in copying files or renaming files or directories during the Maven build lifecycle -->
+  <plugin>
+  <groupId>com.coderplus.maven.plugins</groupId>
+  <artifactId>copy-rename-maven-plugin</artifactId>
+  <version>1.0</version>
+  <executions>
+  <execution>
+            <id>copy-file</id>
+            <phase>package</phase>
+            <goals>
+            <goal>copy</goal>
+            </goals>
+            <configuration>
+               <sourceFile>${project.basedir}/target/Frame_Work-0.0.1-jar-with-dependencies.jar</sourceFile>
+               <destinationFile>${user.home}/Projects/FIRST_BLOOD/lib/Frame_Work-0.0.1-fat.jar</destinationFile>
+            </configuration>
+  </execution>
+  </executions>
+  </plugin>  
+  </plugins>
+  </build>
+  
+  <!--info.cukes older Cucumber version it suports  till 1.2.5. The latest version are in io.cucumber starting from 2.0.0.  -->
+  <!-- if we use info.cukes as group id then the versions of all info cukes dependency should be same other wise we will get'IncompatibleClassChangeError: Implementing class' while executing test case -->
+  <dependencies>
+ <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>6.9.1</version>
+</dependency>
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>6.9.1</version>
+</dependency>
+  <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8</version>
+  </dependency>
+  
+  <dependency>
+  			<groupId>Cucumber-Sandwich</groupId>
+  			<artifactId>report</artifactId>
+  			<version>0.0.1</version>
+  			<scope>system</scope>
+  			<systemPath>${project.basedir}/lib/cucumber-sandwich.jar</systemPath>
+  </dependency>
+  
+  <dependency>
+  			<groupId>org.apache.pdfbox</groupId>
+  			<artifactId>pdfbox</artifactId>
+  			<version>2.0.12</version>
+  </dependency>
+  <dependency>
+  			<groupId>javax.mail</groupId>
+  			<artifactId>mail</artifactId>
+  			<version>1.5.0-b01</version>
+  </dependency>
+  <dependency>
+  			<groupId>com.jcraft</groupId>
+  			<artifactId>jsch</artifactId>
+  			<version>0.1.54</version>
+  </dependency>
+  <!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+<dependency>
+    <groupId>com.oracle</groupId>
+    <artifactId>ojdbc6</artifactId>
+    <version>10.2.0.4.0</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/ojdbc6.jar</systemPath>
+</dependency>
+
+<dependency>
+    <groupId>com.oracle</groupId>
+    <artifactId>ojdbc14</artifactId>
+    <version>10.2.0.4.0</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/ojdbc6.jar</systemPath>
+</dependency>
+
+  <dependency>
+    <groupId>dnsjava</groupId>
+    <artifactId>dnsjava</artifactId>
+    <version>2.1.8</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/dnsjava-2.1.8.jar</systemPath>
+</dependency>
+  
+    <dependency>
+    <groupId>org.openengsb.wrapped</groupId>
+    <artifactId>com.atlassian.jira.rest.client</artifactId>
+    <version>2.0.0-m31.w2</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/com.atlassian.jira.rest.client-2.0.0-m31.w2.jar</systemPath>
+</dependency>
+
+    <dependency>
+    <groupId>monte</groupId>
+    <artifactId>monte</artifactId>
+    <version>0.1</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/monte-screen-recorder.jar</systemPath>
+</dependency>
+  
+  <dependency>
+			 <groupId>org.jsoup</groupId>
+			 <artifactId>jsoup</artifactId>
+			 <version>1.8.3</version>
+  </dependency>
+  <dependency>
+			 <groupId>commons-configuration</groupId>
+			 <artifactId>commons-configuration</artifactId>
+			 <version>1.10</version>
+  </dependency>
+  <dependency>
+			 <groupId>commons-lang</groupId>
+			 <artifactId>commons-lang</artifactId>
+			 <version>2.2</version>
+  </dependency>
+  <dependency>
+		     <groupId>com.monitorjbl</groupId>
+		     <artifactId>xlsx-streamer</artifactId>
+	         <version>1.0.1</version>
+  </dependency>
+  <!-- helps to open older version of excel files For HSSF only(ie .xls) -->
+   <dependency>
+			 <groupId>org.apache.poi</groupId>
+			 <artifactId>poi</artifactId>
+			 <version>3.16</version>
+  </dependency>
+    <!-- helps to open new version of excel files(ie .xls and .xlsx formats) -->
+  <dependency>
+			 <groupId>org.apache.poi</groupId>
+			 <artifactId>poi-ooxml</artifactId>
+			 <version>3.16</version>
+  </dependency>
+  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version>
+</dependency>
+  
+  <!--  <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-java</artifactId>
+ 			<version>3.6.0</version>
+ 			<exclusions>
+ 				<exclusion>
+ 					<groupId>org.apache.httpcomponents</groupId>
+ 					<artifactId>httpclient</artifactId>
+ 				</exclusion>
+ 				<exclusion>
+ 					<groupId>org.apache.httpcomponents</groupId>
+ 					<artifactId>httpcore</artifactId>
+ 				</exclusion>
+ 			</exclusions>
+  </dependency>-->
+  
+  <!--   <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-remote-driver</artifactId>
+ 			<version>3.6.0</version>
+  </dependency>  -->
+  
+  <!--   <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-support</artifactId>
+ 			<version>3.6.0</version>
+  </dependency>-->
+  
+   <!--   <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>htmlunit-driver</artifactId>
+ 			<version>2.27</version>
+  </dependency>-->
+  
+    <!-- <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-chrome-driver</artifactId>
+ 			<version>3.6.0</version>
+  </dependency>-->
+  
+    <!-- <dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-ie-driver</artifactId>
+ 			<version>3.6.0</version>
+  </dependency>-->
+  
+  <!-- To begin with, System.out.println outputs to standard output, which typically is a console window. -->
+  <!--  The output from Log4j can go to the console, but it can also go to an email server, a databaseW table, a log file, or various other destinations. -->
+  
+  <dependency>
+			 <groupId>log4j</groupId>
+			 <artifactId>log4j</artifactId>
+		     <version>1.2.17</version>
+  </dependency>
+
+  <!-- Cucumber uses reporter plugins to produce reports that contain information about what scenarios have passed or failed. -->
+  <dependency>
+			 <groupId>net.masterthought</groupId>
+			 <artifactId>cucumber-reporting</artifactId>
+			 <version>3.16.0</version>
+  </dependency>
+  
+  <dependency>
+			 <groupId>org.json</groupId>
+		     <artifactId>json</artifactId>
+			 <version>20180813</version>
+  </dependency>
+  
+  <!--<dependency>
+			 <groupId>org.apache.httpcomponents</groupId>
+		     <artifactId>httpclient</artifactId>
+			 <version>4.3.6</version>
+  </dependency>-->
+  
+  <dependency>
+			 <groupId>javax.ws.rs</groupId>
+			 <artifactId>javax.ws.rs-api</artifactId>
+			 <version>2.0.1</version>
+  </dependency>
+  <dependency>
+			 <groupId>org.glassfish.jersey.core</groupId>
+			 <artifactId>jersey-common</artifactId>
+			 <version>2.22.2</version>
+  </dependency>
+  </dependencies>
+</project>

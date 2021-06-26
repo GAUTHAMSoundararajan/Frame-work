@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Test runner" duration-ms="16058" started-at="2021-06-26T17:13:36Z" finished-at="2021-06-26T17:13:52Z">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Thread1" duration-ms="16058" started-at="2021-06-26T17:13:36Z" finished-at="2021-06-26T17:13:52Z">
+      <class name="test.runners.TestRunner">
+        <test-method status="PASS" signature="before()[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="before" is-config="true" duration-ms="7" started-at="2021-06-26T22:43:36Z" finished-at="2021-06-26T22:43:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- before -->
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="setUpClass" is-config="true" duration-ms="473" started-at="2021-06-26T22:43:36Z" finished-at="2021-06-26T22:43:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="runScenario" duration-ms="15038" started-at="2021-06-26T22:43:36Z" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2021-06-26T22:43:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["login"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[launch]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="tearDownClass" is-config="true" duration-ms="535" started-at="2021-06-26T22:43:51Z" finished-at="2021-06-26T22:43:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method status="PASS" signature="after()[pri:0, instance:test.runners.TestRunner@279ad2e3]" name="after" is-config="true" duration-ms="0" started-at="2021-06-26T22:43:52Z" finished-at="2021-06-26T22:43:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- after -->
+      </class> <!-- test.runners.TestRunner -->
+    </test> <!-- Thread1 -->
+  </suite> <!-- Test runner -->
+</testng-results>

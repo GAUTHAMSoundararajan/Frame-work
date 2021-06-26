@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+  
+<suite name="Test runner" thread-count ="1" >
+  <test name="Thread1" >
+    <classes>
+       <class name="test.runners.TestRunner" />
+    </classes>
+  </test>
+  
+  <listeners>
+     <listener class-name="test.library.Listener" />
+  </listeners>
+</suite>

@@ -7,6 +7,7 @@ import org.testng.ISuiteListener;
 import common.PropertiesHandler;
 
 public class Listener implements ISuiteListener{
+	
 @Override
   public void onStart(ISuite arg0) {
 	System.out.println("in listener");

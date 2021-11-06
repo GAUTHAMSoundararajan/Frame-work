@@ -22,8 +22,8 @@ Feature: launch
   
   @login
   Scenario: login
-    Given login using credentials on apllication
-    #And some other precondition
+    Given login using credentials on aplication
+    And some other precondition
     #When I complete action
     #And some other action
     #And yet another action

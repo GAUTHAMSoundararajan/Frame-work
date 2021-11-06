@@ -24,7 +24,7 @@ import org.testng.TestException;
 
 public class DriverFactory {
 	
-	public static WebDriver driver = null;
+	private static WebDriver driver = null;
 	public static int waitTime = 10;
 	public static String Download_Path = System.getProperty("user.dir")+ File.separator + "reports"+ File.separator+"downloads";
 	public static String firefox_Path = System.getProperty("user.dir")+ File.separator + "lib"+ File.separator+"geckodriver_32.exe";
@@ -32,34 +32,11 @@ public class DriverFactory {
 	public static String IE_64_Path = System.getProperty("user.dir")+ File.separator + "lib"+ File.separator+"IEDriverServer_64.exe";
 	public static String Chrome_Path = System.getProperty("user.dir")+ File.separator + "lib"+ File.separator+"chromedriver.exe";
 	
-	public static void initializeBrowser(String browser,String url) throws IOException {
-		
-		Properties pro = new Properties();
-		FileInputStream Fio = new FileInputStream(System.getProperty("user.dir")+ File.separator +"src"+ File.separator+"test"+ File.separator+"resources"+ File.separator+"testdata"+ File.separator+"config.properties");
-		pro.load(Fio);
-		String value = pro.getProperty("EXECUTION_LOG");
-		System.out.println("naven :"+value);
-		System.out.println("paTH :"+Chrome_Path);
-		if(browser == null)
-			throw new TestException("please provide the broswer name in config file");
-		try {
-		for(int i=0;i<5;i++) {
-			 driver = getDriverPath(browser,url);
-			    System.out.println("browser invoked");
-		    }
-		}
-	    catch(Exception e) {
-	    	System.out.println("gautham :"+e);
-	    	closeBrowser();
-	    	
-	    	throw new TestException("Error in invoking the browser");
-	    }
-	    
-		
-	}
 	
 	
-	private static WebDriver getDriverPath(String browser,String url) {
+	
+	public static WebDriver getDriverPath(String browser,String url) {
+		
 		browser = browser.replaceAll(" ", "");
 		if(browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",Chrome_Path);
@@ -122,21 +99,6 @@ public class DriverFactory {
 			throw new TestException("Browser name doesn't match. Expected : chrome or IE or Firefox.  Actual : '"+browser+"'");
 		}
 		return driver;
-		
-	}
-	
-	protected synchronized static void closeBrowser() {
-		if(driver != null) {
-		driver.close();
-		try {
-			Alert alert = driver.switchTo().alert();
-			alert.accept();
-		}
-		catch (Exception e) {
-			
-		}
-		driver.quit();
-		}
 		
 	}
 	

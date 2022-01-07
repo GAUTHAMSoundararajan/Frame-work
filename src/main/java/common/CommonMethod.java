@@ -80,6 +80,11 @@ public class CommonMethod {
 	return driver;
 	 
  }
+ //This method helps to load the locators (ie) pagefactory implementaion 
+ public static <T> T getPage(Class<T> page) {
+	 return org.openqa.selenium.support.PageFactory.initElements(getDriver(), page);
+ }
+ 
 	public static void webElementTextbox(WebElement element,String field,String value) throws Exception {
 		
 		if(!element.isDisplayed())

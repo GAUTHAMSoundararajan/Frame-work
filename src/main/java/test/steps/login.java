@@ -2,6 +2,7 @@ package test.steps;
 
 import java.io.IOException;
 
+import common.CommonMethod;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +10,7 @@ import module.HomePage;
 import module.Pratice;
 
 
-public class login {
+public class login  extends CommonMethod {
 
 	@Given("^login using credentials on aplication$")
 	public void invokeBrow() throws IOException {
@@ -21,7 +22,7 @@ public class login {
 	@And("^some other precondition$")
 	public void perform() throws Exception {
 		System.out.println("in click");
-		Pratice pp = new Pratice();
+		Pratice pp = CommonMethod.getPage(Pratice.class);
 		pp.loginpage();
 	}
 	

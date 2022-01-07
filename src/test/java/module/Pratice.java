@@ -15,7 +15,7 @@ public class Pratice extends CommonMethod {
 	WebElement ele = getDriver().findElement(By.xpath("//a[contains(text(),'Login')]"));
 	public void loginpage() throws Exception {
 		try {  
-		webElementClick(ele);
+		webElementClick(login);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
